@@ -1,4 +1,4 @@
-from itertools import combinations
+from itertools import combinations, product
 from topologytools.utils import powerset, mmorph_validator, cofix, fix 
 
 def mhoms_generator(source, target):
