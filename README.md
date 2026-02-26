@@ -4,7 +4,11 @@ Tools for computing homological properties of Hom complex of relational structur
 
 ## Installation
 
-I am setting up an installation via ```pip```; hopefully it will be done soonish.
+It is possible to install directly from GitHub:
+
+```
+python3 -m pip install git+https://github.com/gtasinato/topologytools
+```
 
 ## Usage
 
