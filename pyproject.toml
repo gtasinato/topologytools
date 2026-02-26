@@ -1,0 +1,32 @@
+[project]
+name = 'topologytools'
+version = '0.0.1'
+authors = [
+{ name = "Gianluca Tasinato", email = "12410930+gtasinato@users.noreply.github.com"}
+]
+description = "A small package to compute homological properties of Hom compelxes"
+readme = "README.md"
+requires-python = ">=3.13"
+classifiers = [
+	"Programming Language :: Python :: 3",
+	"Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+dependencies=[
+	"galois",
+	"llvmlite",
+	"numba",
+	"numpy",
+	"pcsptools @ git+https://github.com/jakub-oprsal/pcsptools@67d70f73e1fccf58af45f79628b20bee55d1f744",
+	"pycosat",
+	"typing_extensions"
+]
+
+[project.urls]
+Homepage = "https://github.com/gtasinato/topologytools"
+Issues = "https://github.com/gtasinato/topologytools/issues"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
