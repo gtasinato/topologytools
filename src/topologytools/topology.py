@@ -1,5 +1,5 @@
 from itertools import combinations
-from utils import powerset, mmorph_validator, mhoms_generator, cofix, fix 
+from topologytools.utils import powerset, mmorph_validator, mhoms_generator, cofix, fix 
 
 def mhoms_generator(source, target):
     aux = powerset(target.domain)

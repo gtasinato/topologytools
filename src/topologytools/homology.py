@@ -2,8 +2,8 @@ from functools import cache
 import numpy as np
 import galois
 from itertools import combinations
-from utils import compose
-from topology import ProdSimp_Complex
+from topologytools.utils import compose
+from topologytools.topology import ProdSimp_Complex
 
 class ChainComplex(ProdSimp_Complex):
     def __init__(self, *args):
@@ -58,7 +58,7 @@ class ChainComplex(ProdSimp_Complex):
 
     @cache
     def betti(self, d, coeff = 0):
-    """The Betti numebr in dimension d on GF(coeff) (0 for reals/floats, 1 for ints)."""    
+        """The Betti numebr in dimension d on GF(coeff) (0 for reals/floats, 1 for ints)."""    
         c = 0 if (coeff == 0 or coeff == 1) else coeff
         m_upper = self.bd_matrix(d+1, coeff = c)
         m_lower = self.bd_matrix(d, coeff=c)
