@@ -1,6 +1,6 @@
 # Topology and PCSPs
 
-Tools for computing homological properties of Hom complex of relational structures; it relies on Jakub Opršal's [pcsptools](https://github.com/jakub-oprsal/pcsptools) for all polymorphism computations.
+Tools for computing homological properties of Hom complex of relational structures; it relies on Jakub Opršal's [```pcsptools``](https://github.com/jakub-oprsal/pcsptools) for all polymorphism computations.
 
 ## Installation
 
