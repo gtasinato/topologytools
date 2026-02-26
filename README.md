@@ -26,16 +26,16 @@ prod_mhoms = tp.mhom_product(onein(3), nae(2), nae(2)) # also returns a generato
 There is a ```ProdSimp_Complex``` class that computes the convex cells in the Hom complex (as polyhedral complex):
 
 ```
->>>from pcsptools import nae, Structure
->>>from topologytools import topology as tp
+from pcsptools import nae, Structure
+from topologytools import topology as tp
 
->>>test = Structure({0,1,2}, [(1,2,3),(2,3,1), (3,1,2)])
->>>x = tp.ProdSimp_Complex(test, nae(2)) # In this case a circle
+t = Structure({0,1,2}, [(1,2,3),(2,3,1), (3,1,2)])
+x = tp.ProdSimp_Complex(t, nae(2)) # In this case a circle
 
->>>x.dim #dimension of x
-1 
->>>x.euler # Euler characteristic
-2 
+x.dim #dimension of x
+# 1 
+x.euler # Euler characteristic
+# 0
 
 ```
 
@@ -50,7 +50,7 @@ t = Structure({0,1,2}, [(1,2,3),(2,3,1), (3,1,2)])
 y = hm.ChainComplex(t, nae(2)) #can be initialized with two Stucture instances or a ProdSimp_Complex one
 
 y.betti(1, coeff=0) # Betti number over the reals
-1 
+# 1 
 ```
  - in ```utils.py``` there are some useful functions/subroutines
 
