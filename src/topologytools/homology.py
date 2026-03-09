@@ -7,7 +7,7 @@ from topologytools.topology import ProdSimp_Complex
 
 class ChainComplex(ProdSimp_Complex):
     def __init__(self, *args):
-        if len(args) == 2:
+        if len(args) == 2 or len(args) == 3:
             super().__init__(*args)
         elif len(args) == 1:
             assert isinstance(args[0], ProdSimp_Complex), "Not a valid type: expected ProdSimp_Complex recieved {}".format(type(args[0]))

@@ -1,6 +1,6 @@
 # Topology and PCSPs
 
-Tools for computing homological properties of Hom complex of relational structures; it relies on Jakub Opršal's [```pcsptools```](https://github.com/jakub-oprsal/pcsptools) for all polymorphism computations.
+Tools for computing homological properties of Hom complex of relational structures; it relies on Jakub Opršal's [`pcsptools`](https://github.com/jakub-oprsal/pcsptools) for all polymorphism computations.
 
 ## Installation
 
@@ -12,20 +12,21 @@ python3 -m pip install git+https://github.com/gtasinato/topologytools
 
 ## Usage
 
-In ```topology``` there are routines to compute multihomomorphisms between two structures and into a product of two structures:
+In `topology` there are routines to compute multihomomorphisms between two structures:
 
-```
+```py
 from pcsptools import nae, onein
 from topologytools import topology as tp
 
-mhoms = tp.mhoms_generator(onein(3), nae(2)) # returns a generator iterating through multihomomorphisms
-prod_mhoms = tp.mhom_product(onein(3), nae(2), nae(2)) # also returns a generator iterating through all multihomomorphisms
-
+mhoms = tp.mhoms_generator(onein(3), nae(2)) # generator iterating through multihomomorphisms (by checking which maps A -> 2^B are valid)
+# Runtime O(2^(|A||B|))
+mhos = tp.mhoms_generator(onein(3), nae(2), method="homs") # creates mhoms by taking valid unions of homomorphisms
+# Runtime O(2^(|hom(A, B)|))
 ```
 
-There is a ```ProdSimp_Complex``` class that computes the convex cells in the Hom complex (as polyhedral complex):
+There is a `ProdSimp_Complex` class that computes the convex cells in the Hom complex (as polyhedral complex):
 
-```
+```py
 from pcsptools import nae, Structure
 from topologytools import topology as tp
 
@@ -36,12 +37,11 @@ x.dim #dimension of x
 # 1 
 x.euler # Euler characteristic
 # 0
-
 ```
 
-In ```homology```, the class ```ChainComplex``` is defined:
+In `homology`, the class `ChainComplex` is defined:
 
-```
+```py
 from pcsptools import Structure, nae
 from topologytools import homology as hm
 
@@ -52,7 +52,8 @@ y = hm.ChainComplex(t, nae(2)) #can be initialized with two Stucture instances o
 y.betti(1, coeff=0) # Betti number over the reals
 # 1 
 ```
- - in ```utils.py``` there are some useful functions/subroutines
+
+ - in `utils.py` there are some useful functions/subroutines
 
 ## TO-DO 
 
@@ -61,10 +62,10 @@ Here there are features I will slowly try to implement.
 ### Planned
 These are ideas that are potentially feasible:
 
- - in ```topology```:
+ - in `topology`:
    - [ ] Compute only the split multihomomorphisms to the product of two targets
-   - [ ] Automatically compute the closure of a collection of cells if one is given when creating a ```ProdSimp_Complex``` instance.
- - in ```homology```:
+   - [ ] Automatically compute the closure of a collection of cells if one is given when creating a `ProdSimp_Complex` instance.
+ - in `homology`:
    - [ ] Compute integer homology
    - [ ] Decide existence of chain homotopy between maps over reals
    - [ ] Decide existence of chain homotopy between maps over finite fields

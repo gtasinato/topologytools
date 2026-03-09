@@ -1,32 +1,17 @@
 from itertools import combinations, product
-from topologytools.utils import powerset, mmorph_validator, cofix, fix 
-
-def mhoms_generator(source, target):
-    aux = powerset(target.domain)
-    for s in product(aux, repeat=len(source.domain)):
-        mhom = {fix(candidate[0]) : list(candidate[1]) for candidate in zip(source.domain, s)}
-        if mmorph_validator(source, target, mhom):
-            yield mhom
-
-def mhom_product(source, a, b):
-    base = map(fix, source.domain)
-    mhoms_a = mhoms_generator(source, a) if isinstance(a, Structure) else a 
-    mhoms_b = mhoms_generator(source, b) if isinstance(b, Structure) else b
-    tupler = lambda x: tuple(cofix(x))
-    for m_a, m_b in product(mhoms_a, mhoms_b):
-        yield {key: list(map(tupler, product(m_a[key], m_b[key]))) for key in base}
+from topologytools.utils import mhoms_generator 
 
 class ProdSimp_Complex:
     """Class computing Hom(a, b). The two mandatory args are the wo structures, optionally can provide a dictionary cells = {dim : [list of multihomomorphisms]}
     """
-    def __init__(self, t, a, cells = None):
+    def __init__(self, t, a, cells = None, method="sets"):
         self._left_structure = t
         self._right_structure = a
         if cells is not None:
             self._cells = cells
         else:
             cells = {}
-            mhoms = mhoms_generator(self.left_structure, self.right_structure)
+            mhoms = mhoms_generator(self.left_structure, self.right_structure, method=method)
 
             for m in mhoms:
                 length = sum(len(value)-1 for value in m.values())
